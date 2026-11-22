@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs the 6 Hackathon Winner Skills across Antigravity, Claude Code,
+# Installs the 7 Hackathon Winner Skills across Antigravity, Claude Code,
 # OpenCode, and Codex (.agents) global skill directories.
 set -euo pipefail
 
@@ -11,6 +11,7 @@ SKILLS=(
   invisible-channel-magic
   adaptive-world-loop
   multi-model-specialist-router
+  hackathon-team-sync
 )
 
 TARGETS=(

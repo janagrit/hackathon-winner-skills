@@ -7,8 +7,12 @@ Distilled from 141 submissions at the **Gemini 4 NYC Hackathon** (`cerebralvalle
 ## Overall & Track Winners
 
 ### 1. Adaptive NPCs — *1st Place Overall + Best Use of Managed Agents*
-- **Hook:** Plug-and-play SDK that watches how a player plays in real time, adapts AI opponent tactics to keep difficulty in the flow zone, and mutates world environment assets to keep gameplay fresh.
-- **Why it won:** Closed feedback loop (`player telemetry -> agentic reasoning -> live opponent + world mutation`) **plus** clear B2B developer packaging ("drop-in API for any game studio").
+- **Hook:** Plug-and-play game SDK (`setup.json` + 1 WebSocket + 90-line `pick.js`) demoed live with a **physical M5 BLE gyro tennis racket + player webcam + 3D court** AND a **CS:GO** demo running on the *exact same* backend.
+- **Under-the-hood implementation (`GavinWongYF/gemini-hackathon`):**
+  1. **Zero-latency `<1ms` local `pick.js`:** The game *never* waits on an LLM to move. `pick()` evaluates JSON `if/do` rules + `base + weight * habit_value` locally at 60fps, swapping updated JSON brains *only between rounds*.
+  2. **4-speed Gemini split:** `Designer` (`gemini-4-carbon`, once at setup) invents 8–10 player habits + fake personas and headless-playtests matchups; `Watcher` (`gemini-decision-1`, `~280ms`, 0 output tokens) scores habits `0..1` from events + `384px` JPEGs; `Adapter` (`gemini-4-hydrogen`/`neon`, `~5–15s`) rewrites weights toward a **50% fair fight** and verifies `before` vs `after` hypothesis `checks`; `Deepest Writer` (**Managed Agent** on match breaks, `~90–120s`) explores multiple candidate rule sets in a persistent cloud sandbox.
+  3. **Managed Agent QA Hooks:** Injected `.agents/skills/playtest/SKILL.md`, `evaluate.py`, `gate.py` (`pre_tool_execution` blocking saves into `/workspace/library/` without a passing `/workspace/tests/<name>.json`), and `audit.py` (`post_tool_execution` SHA-256 fingerprint check).
+  4. **Zero-collision team execution:** `TEAM_SYNC.md` gave each teammate/parallel AI chat strict folder ownership (`hardware/`, `scene/`, `engine/`, `agents/`) bridged by one frozen protocol + shared `test-vectors.json`.
 
 ### 2. routr — *2nd Place Overall*
 - **Hook:** Autonomous PCB trace router that beat `freerouting`, `PCBRouter`, and frontier LLMs on `PCBWorld`'s hardest circuit boards (**`7/10` solved vs `<5/10` prior best**).

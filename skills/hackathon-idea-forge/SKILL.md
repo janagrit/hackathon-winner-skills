@@ -67,7 +67,7 @@ Present **3 distinct ideas**, ordered by score, each with:
 - **The 60-Second Stage Demo:** Exact second-by-second script of what happens live on screen.
 - **Load-Bearing Architecture:** Specific job of every model/sponsor API (no filler).
 - **The Proof Hook:** What objective benchmark, mathematical check, or live physical action proves it works.
-- **Hour-by-Hour MVP Cutline:** What to build in Hours 1–2 (the magic core), Hours 3–5 (proof + UI), and what to cut ruthlessly.
+- **Hour-by-Hour MVP Cutline:** What to build in Hours 1–2 (the magic core), Hours 3–5 (proof + UI), what to cut ruthlessly, and how to split lanes cleanly with `hackathon-team-sync` if working with teammates or parallel coding chats.
 
 ## Anti-Patterns
 
